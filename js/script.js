@@ -1,12 +1,24 @@
 let brick_container = document.querySelector('.brick-container');
 
-function makingBricks(n)
+function makeBricks()
 {
-    for(let i=0;i<n;i++)
+    for(let i=0;i<6;i++)
     {
-        const brick = document.createElement('div');
-        brick.className = 'brick';
-        brick_container.appendChild(brick);
+        for (let j = 0; j < 9; j++) {
+            const brick = document.createElement('div');
+            brick.classList.add("brick");
+            if (i===0||i===1){
+                brick.classList.add("l4")
+            }else if(i===2){
+                brick.classList.add("l3")
+            }else if(i===3){
+                brick.classList.add("l2")
+            }else{
+                brick.classList.add("l1")
+            }
+            brick_container.appendChild(brick);
+        }
     }
 }
-makingBricks(36);
+makeBricks();
+
