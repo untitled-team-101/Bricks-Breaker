@@ -9,4 +9,4 @@ function makingBricks(n)
         brick_container.appendChild(brick);
     }
 }
-makingBricks(30);
+makingBricks(36);
