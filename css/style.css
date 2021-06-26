@@ -1,0 +1,29 @@
+*
+{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.main-container{
+    width: 70vh;
+    height: 100vh;
+    border: black 5px solid;
+}
+.brick-container
+{
+    display: grid;
+    grid-template-columns: repeat(6,auto);
+}
+.brick
+{
+    height: 5vh;
+    background-color: greenyellow;
+    border: black 3px solid;
+}
