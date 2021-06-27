@@ -2,7 +2,7 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 
 :root {
@@ -13,17 +13,29 @@
     --power-up-top: 0;
 }
 
+@font-face {
+    font-family: 'chopsic';
+    src: url('../fonts/Chopsic.ttf');
+}
+
 body {
     display: flex;
     align-content: center;
     align-items: center;
     justify-content: center;
+    background-image: url("../img/bg.webp");
+    background-size: cover;
 }
 
 .main-container {
-    width: 70vh;
-    height: 100vh;
     position: relative;
+    width: 100vw;
+    padding: 20px;
+    height: 100vh;
+    border: black 1px solid;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .brick-container {
@@ -34,18 +46,38 @@ body {
 
 .brick {
     height: 5vh;
-    background-color: greenyellow;
-    border: black 3px solid;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 1%, rgba(200, 200, 200, 1) 21%, rgba(255, 255, 255, 1) 100%);
+    box-shadow: inset 0 0 5px #000;
+}
+
+.score-container {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+    color: #fff;
+    padding: 10px;
+    z-index: -1;
+}
+
+.score-container div {
+    font-family: chopsic, serif;
+    font-size: 4vh;
 }
 
 #ball {
-    border-radius: 100%;
-    height: 2vh;
-    width: 2vh;
     position: absolute;
+    height: 4vh;
+    width: 4vh;
+    border-radius: 100%;
+    background-image: url("../img/ball1.png");
+    background-position: center;
+    background-size: 100%;
     left: calc(var(--ball-left) * 1px);
     top: calc(var(--ball-top) * 1px);
-    background: black;
 }
 
 .broken {
@@ -57,12 +89,18 @@ body {
 /*}*/
 
 #pad {
-    bottom: 0.5vh;
-    width: 15vh;
-    height: 2vh;
+    width: 15vw;
+    height: 3vh;
     position: absolute;
+    bottom: 5vh;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(208, 208, 208, 1) 100%);
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
     left: calc(var(--pad-left) * 1px);
-    background: green;
 }
 
 .power-up {
@@ -94,4 +132,161 @@ body {
     animation: blast .5s ease;
     opacity: 0;
     /*position: absolute;*/
+}
+
+.leftpad {
+    height: 130%;
+    width: 20%;
+    background-color: red;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.rightpad {
+    height: 130%;
+    width: 20%;
+    background-color: red;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+
+@keyframes blast {
+    25% {
+        transform: scale(1.3);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    75% {
+        transform: scale(1.7);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+        display: none;
+    }
+}
+
+.powerball {
+    background-color: transparent !important;
+    background-image: url("../img/powerball.png") !important;
+    background-size: 100%;
+    background-position: center;
+    width: 8vh !important;
+    height: 8vh !important;
+    animation: powerball 5s infinite linear;
+}
+
+@keyframes powerball {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.startbtn{
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.home,.restart,.next{
+    width: 20vw;
+    background-color: red;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#myModal{
+    display: none;
+}
+#yourModal{
+    display: none;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,.5); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: .4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {transform: scale(0); opacity:0}
+    to {transform: scale(1); opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {
+    padding: 2px 16px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #4339ff;
+    color: white;
 }
