@@ -3,30 +3,36 @@ let pad = document.querySelector("#pad");
 let ball = document.querySelector("#ball");
 let bricks = document.querySelectorAll(".brick")
 
-mainContainer.addEventListener("mousemove", (event) => {
-    let left = event.clientX - event.target.offsetLeft
-    left -= pad.offsetWidth / 2
-    if(left < 0)
-        return
-    if(left > event.target.offsetWidth - pad.offsetWidth - 2)
-        return
-    mainContainer.style.setProperty("--pad-left", left.toString())
-})
-
+let gameRunning = 0;
 let ballTop = 0
 let ballLeft = 0
 let ballMoveDelay = 20;
+
+let padCollisionPoint = 0;
 let ballsLife = 3;
 let timerId = 0;
-
 let ballsDirection = {
     left: 0,
     top: 0
 }
 
+mainContainer.addEventListener("mousemove", (event) => {
+    let padLeft = event.clientX - event.target.offsetLeft
+    padLeft -= pad.offsetWidth / 2
+    if(padLeft < 0)
+        return
+    if(padLeft > event.target.offsetWidth - pad.offsetWidth - 2)
+        return
+    mainContainer.style.setProperty("--pad-left", padLeft.toString())
+    if (gameRunning === 0) {
+        ballLeft = padLeft + pad.offsetWidth / 2 - ball.offsetWidth / 2
+        mainContainer.style.setProperty("--ball-left", ballLeft.toString())
+    }
+})
+
 const startBallMove = () => {
-    ballTop = mainContainer.offsetHeight/2 - ball.offsetHeight/2;
-    ballLeft = mainContainer.offsetWidth/2 - ball.offsetWidth/2;
+    ballTop = mainContainer.offsetHeight - pad.offsetHeight*1.25 - ball.offsetHeight;
+    ballLeft = ballLeft;
     ballsDirection = {
         left: 3,
         top: -3
@@ -116,7 +122,24 @@ const getCollisionBetween = (element1, element2) => {
 
 const checkPadCollision = () => {
     if(getCollisionBetween(ball, pad)){
-        ballsDirection.top *= -1
+        padCollisionPoint = ball.offsetLeft + ball.offsetWidth/2;
+        if (padCollisionPoint < (pad.offsetLeft + pad.offsetWidth/4)) {
+            ballsDirection.left = -3.741657387
+            ballsDirection.top = -2
+            console.log("1")
+        } else if (padCollisionPoint < (pad.offsetLeft + pad.offsetWidth/2)){
+            ballsDirection.left = -2
+            ballsDirection.top = -3.741657387
+            console.log("2")
+        } else if (padCollisionPoint >= (pad.offsetLeft + pad.offsetWidth/2) && padCollisionPoint < (pad.offsetLeft + pad.offsetWidth/4*3)){
+            ballsDirection.left = 2
+            ballsDirection.top = -3.741657387
+            console.log("3")
+        } else {
+            ballsDirection.left = 3.741657387
+            ballsDirection.top = -2
+            console.log("4")
+        }
         while (ballTop + ball.offsetHeight > pad.offsetTop)
             ballTop--
     }
@@ -196,4 +219,10 @@ const startGame = () => {
     timerId = setInterval(moveBall, ballMoveDelay)
 }
 
-startGame();
+mainContainer.addEventListener("click", (event) => {
+    if (gameRunning === 0) {
+        gameRunning = 1;
+        startGame();
+    }
+})
+
