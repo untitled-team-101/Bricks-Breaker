@@ -10,7 +10,18 @@ function generateBricks(n,lev)
         brick_container.appendChild(brick);
     }
 }
-generateBricks(12,'l4');
-generateBricks(12,'l3');
-generateBricks(12,'l2');
-generateBricks(12,'l1');
+
+function generateLevelZero()
+{
+    generateBricks(6,'l1');
+}
+
+function generateLevelOne()
+{
+    generateBricks(6,'l3');
+    generateBricks(12,'l4');
+    generateBricks(6,'l2');
+    generateBricks(12,'l1');
+}
+
+generateLevelOne();
