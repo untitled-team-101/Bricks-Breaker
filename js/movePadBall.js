@@ -130,7 +130,28 @@ const checkBrickCollision = () => {
             continue
 
         let collision = getCollisionBetween(ball, brick)
-        if(!collision)
+        if(collision) {
+            if(brick.classList.contains('l1'))
+            {
+                brick.classList.add("broken");
+            }
+            else if(brick.classList.contains('l4'))
+            {
+                brick.classList.remove('l4');
+                brick.classList.add('l3');
+            }
+            else if(brick.classList.contains('l3'))
+            {
+                brick.classList.remove('l3');
+                brick.classList.add('l2');
+            }
+            else if(brick.classList.contains('l2'))
+            {
+                brick.classList.remove('l2');
+                brick.classList.add('l1');
+            }
+        }
+        else if(!collision)
             continue
 
         onCollisionWithBrick(ball, brick)
@@ -141,6 +162,9 @@ const checkBrickCollision = () => {
             ballsDirection.top *= -1
     }
 }
+
+
+
 
 const checkWallCollision = () => {
     if(ballLeft > mainContainer.offsetWidth - ball.offsetWidth - 1)

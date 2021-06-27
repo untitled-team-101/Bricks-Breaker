@@ -62,3 +62,26 @@ body {
     left: calc(var(--pad-left) * 1px);
     background: green;
 }
+
+
+.l4{
+    background: rgb(255,139,139);
+    background: linear-gradient(180deg, rgba(255,139,139,1) 0%, rgba(255,0,0,1) 21%, rgba(255,156,156,1) 100%);
+}
+.l2{
+    background: rgb(205,255,202);
+    background: linear-gradient(180deg, rgba(205,255,202,1) 1%, rgba(29,255,0,1) 21%, rgba(202,255,199,1) 100%);
+}
+.l3{
+    background: rgb(95,175,255);
+    background: linear-gradient(180deg, rgba(95,175,255,1) 1%, rgba(0,111,255,1) 21%, rgba(101,174,251,1) 100%);
+}
+.l1{
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 1%, rgba(255,249,0,1) 21%, rgba(248,248,248,1) 100%);
+}
+.l0{
+    animation: blast .5s ease;
+    opacity: 0;
+    /*position: absolute;*/
+}
