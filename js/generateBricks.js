@@ -1,6 +1,6 @@
 let brick_container = document.querySelector('.brick-container');
 
-function makingBricks(n)
+function generateBricks(n)
 {
     for(let i=0;i<n;i++)
     {
@@ -9,4 +9,4 @@ function makingBricks(n)
         brick_container.appendChild(brick);
     }
 }
-makingBricks(30);
+generateBricks(30);
