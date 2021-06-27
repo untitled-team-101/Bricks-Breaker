@@ -1,12 +1,16 @@
 let brick_container = document.querySelector('.brick-container');
 
-function generateBricks(n)
+function generateBricks(n,lev)
 {
     for(let i=0;i<n;i++)
     {
         const brick = document.createElement('div');
-        brick.className = 'brick';
+        brick.classList.add('brick');
+        brick.classList.add(lev);
         brick_container.appendChild(brick);
     }
 }
-generateBricks(30);
+generateBricks(12,'l4');
+generateBricks(12,'l3');
+generateBricks(12,'l2');
+generateBricks(12,'l1');

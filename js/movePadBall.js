@@ -7,6 +7,7 @@ let gameRunning = 0;
 let ballTop = 0
 let ballLeft = 0
 let ballMoveDelay = 20;
+
 let padCollisionPoint = 0;
 let ballsLife = 3;
 let timerId = 0;
@@ -70,21 +71,23 @@ const getCollisionBetween = (element1, element2) => {
             //ttb collision
             if(bottom1 - top2 > ballsDirection.top){
                 console.log("ltr")
+                return "ltr"
             }
-            else{
+            else {
                 console.log("ttb")
+                return "ttb"
             }
-            return true
         }
         if(top1 < bottom2 && top1 > top2){
             //btt collision
             if(top1 - bottom2 > ballsDirection.top){
                 console.log("ltr")
+                return "ltr"
             }
             else{
                 console.log("btt")
+                return "btt"
             }
-            return true
         }
     }
     if(left1 > left2 && left1 < right2){
@@ -93,24 +96,27 @@ const getCollisionBetween = (element1, element2) => {
             //ttb collision
             if(bottom1 - top2 > ballsDirection.top){
                 console.log("rtl")
+                return "rtl"
             }
             else{
                 console.log("ttb")
+                return "ttb"
             }
-            return true
         }
         if(top1 < bottom2 && top1 > top2){
             //btt collision
             if(top1 - bottom2 > ballsDirection.top){
                 console.log("rtl")
+                return "rtl"
             }
             else{
                 console.log("btt")
+                return "btt"
             }
-            return true
         }
     }
     return false
+    // return type [1/0/-1, 1/0/-1] i.e. [ttb//btt, ltr//rtl]
 }
 
 const checkPadCollision = () => {
@@ -138,17 +144,49 @@ const checkPadCollision = () => {
     }
 }
 
+const onCollisionWithBrick = (ball, brick) => {}
+
 const checkBrickCollision = () => {
     for(let brick of bricks){
         if(brick.classList.contains("broken"))
             continue
-        if(getCollisionBetween(ball, brick)){
-            brick.classList.add("broken")
-            // brick.outerHTML = ""
-            return
+
+        let collision = getCollisionBetween(ball, brick)
+        if(collision) {
+            if(brick.classList.contains('l1'))
+            {
+                brick.classList.add("broken");
+            }
+            else if(brick.classList.contains('l4'))
+            {
+                brick.classList.remove('l4');
+                brick.classList.add('l3');
+            }
+            else if(brick.classList.contains('l3'))
+            {
+                brick.classList.remove('l3');
+                brick.classList.add('l2');
+            }
+            else if(brick.classList.contains('l2'))
+            {
+                brick.classList.remove('l2');
+                brick.classList.add('l1');
+            }
         }
+        else if(!collision)
+            continue
+
+        onCollisionWithBrick(ball, brick)
+
+        if(collision === "rtl" || collision === "ltr")
+            ballsDirection.left *= -1
+        if(collision === "ttb" || collision === "btt")
+            ballsDirection.top *= -1
     }
 }
+
+
+
 
 const checkWallCollision = () => {
     if(ballLeft > mainContainer.offsetWidth - ball.offsetWidth - 1)
