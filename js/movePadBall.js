@@ -31,7 +31,6 @@ mainContainer.addEventListener("mousemove", (event) => {
 
 const startBallMove = () => {
     ballTop = mainContainer.offsetHeight - pad.offsetHeight*1.25 - ball.offsetHeight;
-    ballLeft = ballLeft;
     ballsDirection = {
         left: 3,
         top: -3
@@ -118,19 +117,19 @@ const checkPadCollision = () => {
     if(getCollisionBetween(ball, pad)){
         padCollisionPoint = ball.offsetLeft + ball.offsetWidth/2;
         if (padCollisionPoint < (pad.offsetLeft + pad.offsetWidth/4)) {
-            ballsDirection.left = -3.741657387
+            ballsDirection.left = -Math.sqrt(14)
             ballsDirection.top = -2
             console.log("1")
         } else if (padCollisionPoint < (pad.offsetLeft + pad.offsetWidth/2)){
             ballsDirection.left = -2
-            ballsDirection.top = -3.741657387
+            ballsDirection.top = -Math.sqrt(14)
             console.log("2")
         } else if (padCollisionPoint >= (pad.offsetLeft + pad.offsetWidth/2) && padCollisionPoint < (pad.offsetLeft + pad.offsetWidth/4*3)){
             ballsDirection.left = 2
-            ballsDirection.top = -3.741657387
+            ballsDirection.top = -Math.sqrt(14)
             console.log("3")
         } else {
-            ballsDirection.left = 3.741657387
+            ballsDirection.left = Math.sqrt(14)
             ballsDirection.top = -2
             console.log("4")
         }
@@ -177,6 +176,7 @@ const moveBall = () => {
 }
 
 const startGame = () => {
+
     startBallMove()
     timerId = setInterval(moveBall, ballMoveDelay)
 }
@@ -186,8 +186,9 @@ mainContainer.addEventListener("click", (event) => {
         gameRunning = 1;
         startGame();
     }
-    else {
-        return;
-    }
 })
 
+ballTop = mainContainer.offsetHeight - pad.offsetHeight*1.25 - ball.offsetHeight;
+ballLeft = pad.offsetWidth/2 - ball.offsetWidth/2;
+mainContainer.style.setProperty("--ball-left", ballLeft.toString())
+mainContainer.style.setProperty("--ball-top", ballTop.toString())
