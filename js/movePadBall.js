@@ -30,7 +30,7 @@ mainContainer.addEventListener("mousemove", (event) => {
 })
 
 const startBallMove = () => {
-    ballTop = mainContainer.offsetHeight - pad.offsetHeight*1.25 - ball.offsetHeight;
+    ballTop = pad.offsetTop - ball.offsetHeight;
     ballsDirection = {
         left: 0,
         top: -3
@@ -40,7 +40,7 @@ const startBallMove = () => {
 const onLifeGone = () => {
     gameRunning = 0
     clearInterval(timerId)
-    ballTop = mainContainer.offsetHeight - pad.offsetHeight*1.25 - ball.offsetHeight;
+    ballTop = pad.offsetTop - ball.offsetHeight;
     ballLeft = pad.offsetLeft + pad.offsetWidth/2 - ball.offsetWidth/2;
     mainContainer.style.setProperty("--ball-left", ballLeft.toString())
     mainContainer.style.setProperty("--ball-top", ballTop.toString())
@@ -249,7 +249,7 @@ mainContainer.addEventListener("click", (event) => {
     }
 })
 
-ballTop = mainContainer.offsetHeight - pad.offsetHeight*1.25 - ball.offsetHeight;
+ballTop = pad.offsetTop - ball.offsetHeight;
 ballLeft = pad.offsetWidth/2 - ball.offsetWidth/2;
 mainContainer.style.setProperty("--ball-left", ballLeft.toString())
 mainContainer.style.setProperty("--ball-top", ballTop.toString())
