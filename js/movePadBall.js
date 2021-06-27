@@ -33,9 +33,18 @@ mainContainer.addEventListener("mousemove", (event) => {
 const startBallMove = () => {
     ballTop = mainContainer.offsetHeight - pad.offsetHeight*1.25 - ball.offsetHeight;
     ballsDirection = {
-        left: 3,
+        left: 0,
         top: -3
     }
+}
+
+const onLifeGone = () => {
+    gameRunning = 0
+    clearInterval(timerId)
+    ballTop = mainContainer.offsetHeight - pad.offsetHeight*1.25 - ball.offsetHeight;
+    ballLeft = pad.offsetLeft + pad.offsetWidth/2 - ball.offsetWidth/2;
+    mainContainer.style.setProperty("--ball-left", ballLeft.toString())
+    mainContainer.style.setProperty("--ball-top", ballTop.toString())
 }
 
 const onBallDropped = () => {
@@ -50,8 +59,9 @@ const onBallDropped = () => {
             top: 0
         }
     }
-    else
-        startBallMove()
+    else {
+        onLifeGone()
+    }
 }
 
 const getCollisionBetween = (element1, element2) => {
@@ -195,9 +205,6 @@ const checkBrickCollision = () => {
     }
 }
 
-
-
-
 const checkWallCollision = () => {
     if(ballLeft > mainContainer.offsetWidth - ball.offsetWidth - 1)
         ballsDirection.left *= -1
@@ -236,7 +243,6 @@ const startGame = () => {
     startBallMove();
     timerId = setInterval(moveBall, ballMoveDelay)
 }
-
 
 mainContainer.addEventListener("click", (event) => {
     if (gameRunning === 0) {
