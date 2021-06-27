@@ -9,7 +9,7 @@ let ballLeft = 0
 let ballMoveDelay = 5;
 
 let padCollisionPoint = 0;
-let ballsLife = 3;
+let ballsLife = 100;
 let timerId = 0;
 let ballsDirection = {
     left: 0,
@@ -69,48 +69,48 @@ const getCollisionBetween = (element1, element2) => {
         //ltr collision
         if(bottom1 > top2 && bottom1 < bottom2){
             //ttb collision
-            if(bottom1 - top2 > ballsDirection.top){
-                console.log("ltr")
+            if(bottom1 - top2 > right1 - left2){
+                console.log("111")
                 return "ltr"
             }
             else {
-                console.log("ttb")
+                console.log("112")
                 return "ttb"
             }
         }
         if(top1 < bottom2 && top1 > top2){
             //btt collision
-            if(top1 - bottom2 > ballsDirection.top){
-                console.log("ltr")
+            if(top1 - bottom2 > right1 - left2){
+                console.log("121")
                 return "ltr"
             }
             else{
-                console.log("btt")
+                console.log("122")
                 return "btt"
             }
         }
     }
-    if(left1 > left2 && left1 < right2){
+    if(left1 < right2 && left1 > left2){
         //rtl collision
         if(bottom1 > top2 && bottom1 < bottom2){
             //ttb collision
-            if(bottom1 - top2 > ballsDirection.top){
-                console.log("rtl")
+            if(bottom1 - top2 > right2 - left1){
+                console.log("211")
                 return "rtl"
             }
             else{
-                console.log("ttb")
+                console.log("212")
                 return "ttb"
             }
         }
         if(top1 < bottom2 && top1 > top2){
             //btt collision
-            if(top1 - bottom2 > ballsDirection.top){
-                console.log("rtl")
+            if(top1 - bottom2 > right2 - left1){
+                console.log("221")
                 return "rtl"
             }
             else{
-                console.log("btt")
+                console.log("222")
                 return "btt"
             }
         }
@@ -145,32 +145,35 @@ const checkPadCollision = () => {
 }
 
 const onCollisionWithBrick = (ball, brick,collision) => {
-    if(collision) {
-        if(brick.classList.contains('l1'))
-        {
-            brick.classList.remove('l1');
-            brick.classList.add("broken");
-        }
-        else if(brick.classList.contains('l4'))
-        {
-            brick.classList.remove('l4');
-            brick.classList.add('l3');
-        }
-        else if(brick.classList.contains('l3'))
-        {
-            brick.classList.remove('l3');
-            brick.classList.add('l2');
-        }
-        else if(brick.classList.contains('l2'))
-        {
-            brick.classList.remove('l2');
-            brick.classList.add('l1');
-        }
+    if(brick.classList.contains('l1'))
+    {
+        brick.classList.remove('l1');
+        brick.classList.add("broken");
+    }
+    else if(brick.classList.contains('l4'))
+    {
+        brick.classList.remove('l4');
+        brick.classList.add('l3');
+    }
+    else if(brick.classList.contains('l3'))
+    {
+        brick.classList.remove('l3');
+        brick.classList.add('l2');
+    }
+    else if(brick.classList.contains('l2'))
+    {
+        brick.classList.remove('l2');
+        brick.classList.add('l1');
     }
 }
 
+let ignoreBrickCollision = false
 const checkBrickCollision = () => {
+    if(ignoreBrickCollision)
+        return
     for(let brick of bricks){
+        if(ignoreBrickCollision)
+            return
         if(brick.classList.contains("broken"))
             continue
 
@@ -180,6 +183,10 @@ const checkBrickCollision = () => {
             continue
 
         onCollisionWithBrick(ball, brick,collision);
+        ignoreBrickCollision = true
+        setTimeout(()=> {
+            ignoreBrickCollision = false
+        }, ballMoveDelay*2)
 
         if(collision === "rtl" || collision === "ltr")
             ballsDirection.left *= -1
@@ -242,4 +249,3 @@ ballTop = mainContainer.offsetHeight - pad.offsetHeight*1.25 - ball.offsetHeight
 ballLeft = pad.offsetWidth/2 - ball.offsetWidth/2;
 mainContainer.style.setProperty("--ball-left", ballLeft.toString())
 mainContainer.style.setProperty("--ball-top", ballTop.toString())
-
