@@ -5,19 +5,30 @@
     <title>Brick Breaker Game</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
-    <script src="js/blast.js" defer></script>
-    <link rel="stylesheet" href="css/animate.css">
 </head>
 <body>
+
 <div class="main-container">
     <div class="brick-container">
 
     </div>
-    <div id="ball">
+    <div id="ball" class="powerball">
     </div>
     <div id="pad">
+        <div class="leftpad">
+        </div>
+        <div class="rightpad">
+        </div>
     </div>
 
+</div>
+<div class="score-container">
+    <div class="lives">
+        Lives: <span id="lives">2</span>
+    </div>
+    <div class="score">
+       Score: <span id="score">10000</span>
+    </div>
 </div>
 </body>
 </html>
