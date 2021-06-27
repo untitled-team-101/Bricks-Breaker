@@ -6,8 +6,7 @@ let bricks = document.querySelectorAll(".brick")
 let gameRunning = 0;
 let ballTop = 0
 let ballLeft = 0
-let ballMoveDelay = 5;
-
+let ballMoveDelay = 10;
 let padCollisionPoint = 0;
 let ballsLife = 3;
 let timerId = 0;
@@ -156,23 +155,22 @@ const checkPadCollision = () => {
 
 const onCollisionWithBrick = (ball, brick,collision) => {
     if(collision) {
-        if(brick.classList.contains('l1'))
-        {
+        if(brick.classList.contains('l1')) {
             brick.classList.remove('l1');
             brick.classList.add("broken");
+            if (brick.classList.contains('power')) {
+                dropPower(brick);
+            }
         }
-        else if(brick.classList.contains('l4'))
-        {
+        else if(brick.classList.contains('l4')) {
             brick.classList.remove('l4');
             brick.classList.add('l3');
         }
-        else if(brick.classList.contains('l3'))
-        {
+        else if(brick.classList.contains('l3')) {
             brick.classList.remove('l3');
             brick.classList.add('l2');
         }
-        else if(brick.classList.contains('l2'))
-        {
+        else if(brick.classList.contains('l2')) {
             brick.classList.remove('l2');
             brick.classList.add('l1');
         }

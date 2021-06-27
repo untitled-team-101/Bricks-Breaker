@@ -9,6 +9,8 @@
     --ball-left: 0;
     --ball-top: 0;
     --pad-left: 0;
+    --power-up-left: 0;
+    --power-up-top: 0;
 }
 
 body {
@@ -63,6 +65,14 @@ body {
     background: green;
 }
 
+.power-up {
+    position: absolute;
+    height: 4vh;
+    width: 4vh;
+    background-color: black;
+    left: calc(var(--power-up-left) * 1px);
+    top: calc(var(--power-up-top) * 1px);
+}
 
 .l4{
     background: rgb(255,139,139);
