@@ -6,7 +6,7 @@ let bricks = document.querySelectorAll(".brick")
 let gameRunning = 0;
 let ballTop = 0
 let ballLeft = 0
-let ballMoveDelay = 20;
+let ballMoveDelay = 5;
 
 let padCollisionPoint = 0;
 let ballsLife = 3;
@@ -144,7 +144,30 @@ const checkPadCollision = () => {
     }
 }
 
-const onCollisionWithBrick = (ball, brick) => {}
+const onCollisionWithBrick = (ball, brick,collision) => {
+    if(collision) {
+        if(brick.classList.contains('l1'))
+        {
+            brick.classList.remove('l1');
+            brick.classList.add("broken");
+        }
+        else if(brick.classList.contains('l4'))
+        {
+            brick.classList.remove('l4');
+            brick.classList.add('l3');
+        }
+        else if(brick.classList.contains('l3'))
+        {
+            brick.classList.remove('l3');
+            brick.classList.add('l2');
+        }
+        else if(brick.classList.contains('l2'))
+        {
+            brick.classList.remove('l2');
+            brick.classList.add('l1');
+        }
+    }
+}
 
 const checkBrickCollision = () => {
     for(let brick of bricks){
@@ -152,31 +175,11 @@ const checkBrickCollision = () => {
             continue
 
         let collision = getCollisionBetween(ball, brick)
-        if(collision) {
-            if(brick.classList.contains('l1'))
-            {
-                brick.classList.add("broken");
-            }
-            else if(brick.classList.contains('l4'))
-            {
-                brick.classList.remove('l4');
-                brick.classList.add('l3');
-            }
-            else if(brick.classList.contains('l3'))
-            {
-                brick.classList.remove('l3');
-                brick.classList.add('l2');
-            }
-            else if(brick.classList.contains('l2'))
-            {
-                brick.classList.remove('l2');
-                brick.classList.add('l1');
-            }
-        }
-        else if(!collision)
+
+        if(!collision)
             continue
 
-        onCollisionWithBrick(ball, brick)
+        onCollisionWithBrick(ball, brick,collision);
 
         if(collision === "rtl" || collision === "ltr")
             ballsDirection.left *= -1
@@ -211,13 +214,22 @@ const moveBall = () => {
     mainContainer.style.setProperty("--ball-left", ballLeft.toString())
     mainContainer.style.setProperty("--ball-top", ballTop.toString())
     checkCollision();
+    checkEndgame();
+}
+
+function checkEndgame() {
+    if(document.querySelectorAll('.broken').length === bricks.length){
+        console.log('Game Finished');
+        clearInterval(timerId);
+        ball.style.opacity = '0';
+    }
 }
 
 const startGame = () => {
-
-    startBallMove()
+    startBallMove();
     timerId = setInterval(moveBall, ballMoveDelay)
 }
+
 
 mainContainer.addEventListener("click", (event) => {
     if (gameRunning === 0) {
@@ -230,3 +242,4 @@ ballTop = mainContainer.offsetHeight - pad.offsetHeight*1.25 - ball.offsetHeight
 ballLeft = pad.offsetWidth/2 - ball.offsetWidth/2;
 mainContainer.style.setProperty("--ball-left", ballLeft.toString())
 mainContainer.style.setProperty("--ball-top", ballTop.toString())
+
