@@ -36,6 +36,7 @@ body {
     justify-content: center;
     background-image: url("../img/bg.gif");
     background-size: cover;
+    overflow: hidden;
 }
 
 .main-container {
@@ -53,6 +54,7 @@ body {
     display: grid;
     grid-template-columns: repeat(10, auto);
     grid-gap: 5px;
+    pointer-events: none;
 }
 
 .brick {

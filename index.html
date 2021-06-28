@@ -7,102 +7,200 @@
     <script src="js/generateBricks.js" defer></script>
     <script src="js/powerUp.js" defer></script>
     <script src="js/movePadBall.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/glitch.css">
+    <script src="js/script.js" defer></script>
 </head>
-<body>
-<div id="myModal" class="modal">
+<body onload="playblue()">
+<div id="startModal" class="modal">
 
     <!-- Modal content -->
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close close1">&times;</span>
-            <h2>Tatti sa UI</h2>
+    <div class="modal-content modal-c1">
+        <div class="titlediv">
+            <h1 class="title glitch" data-glitch="Brick Breaker">
+                Brick Breaker
+            </h1>
+
         </div>
-        <div class="modal-body">
-            <div class="startbtn">
-                Start Game
-            </div>
+        <div class="startbtn">
+            <h1 class="play-text">Play</h1>
+            <h1 class="game-text">Game</h1>
         </div>
-        <div class="modal-footer">
-            <h3>Modal Footer</h3>
+
+    </div>
+
+</div>
+<div id="M1" class="modal active">
+
+    <!-- Modal content -->
+    <div class="modal-content modal-s">
+        <div class="storycenter">
+            <div class="story-img img1"></div>
+            <div class="story-text ">Hi, I am Glob.</div>
+        </div>
+        <div class="nextcard">
+
         </div>
     </div>
 
 </div>
-<div id="yourModal" class="modal">
+
+<div id="M2" class="modal">
+
     <!-- Modal content -->
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close close2">&times;</span>
-            <h2>Tatti sa UI</h2>
+    <div class="modal-content modal-s">
+        <div class="storycenter">
+            <div class="story-img img2"></div>
+            <div class="story-text">I live in space and i am stuck in a very heavy problem.</div>
+        </div>
+        <div class="nextcard">
+
+        </div>
+    </div>
+
+</div>
+
+<div id="M3" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content modal-s">
+        <div class="storycenter">
+            <div class="story-img img3">
+
+            </div>
+            <div class="story-text">I lost five of my magic gems in the space.</div>
+        </div>
+        <div class="nextcard">
+
+        </div>
+    </div>
+
+</div>
+<div id="M4" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content modal-s">
+        <div class="storycenter">
+            <div class="story-img img4"></div>
+            <div class="story-text">If it get in the wrong hands it can destroy whole universe.</div>
+        </div>
+        <div class="nextcard">
+
+        </div>
+    </div>
+
+</div>
+<div id="M5" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content modal-s">
+        <div class="storycenter">
+            <div class="story-img img5"></div>
+            <div class="story-text">I need you to find my gems</div>
+        </div>
+        <div class="nextcard">
+
+        </div>
+    </div>
+
+</div>
+
+<div id="endModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content modal-c2">
+
+        <div class="modal-body">
+            <div class="playagain">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="nextModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content modal-c3">
+        <div class="stars">
+            <div class="s1 star">
+            </div>
+            <div class="s2">
+            </div>
+            <div class="s3">
+            </div>
         </div>
         <div class="modal-body">
             <div class="home">
-                home
             </div>
             <div class="restart">
-                restart
             </div>
             <div class="next">
-                next
             </div>
         </div>
-        <div class="modal-footer">
-            <h3>Modal Footer</h3>
-        </div>
     </div>
+
 </div>
 <div class="main-container">
-    <div class="brick-container"></div>
-    <div id="ball"></div>
-    <div id="pad"><div class="leftpad">
-<!--        <button id="myBtn">-->
-<!--            start-->
-<!--        </button>-->
+    <div class="brick-container">
+
     </div>
+    <div id="ball" class="animateball">
+    </div>
+    <div id="pad">
+        <div class="leftpad">
+            <!--            <button id="myBtn">-->
+            <!--                start-->
+            <!--            </button>-->
+
+        </div>
+        <!--        <button id="nextBtn">-->
+        <!--            next-->
+        <!--        </button>-->
         <div class="rightpad">
-<!--            <button id="yourBtn">-->
-<!--                end-->
-<!--            </button>-->
+            <!--            <button id="yourBtn">-->
+            <!--                end-->
+            <!--            </button>-->
         </div>
     </div>
-    <div class="score-container">
-        <div class="lives">
-            Lives: <span id="lives">2</span>
-        </div>
-        <div class="score">
-            Score: <span id="score">10000</span>
-        </div>
+
+</div>
+<div class="score-container">
+    <div class="lives">
+        Lives: <span id="lives">2</span>
+    </div>
+    <div class="score">
+        Score: <span id="score">10000</span>
     </div>
 </div>
-</body>
 <script>
     // Get the modal
-    let modal = document.getElementById("myModal");
-    let modal2 = document.getElementById("yourModal");
+    var modal = document.getElementById("startModal");
+    var modal2 = document.getElementById("endModal");
+    var modal3 = document.getElementById("nextModal");
+    var modals1 = document.getElementById("M1");
+    var modals2 = document.getElementById("M2");
+    var modals3 = document.getElementById("M3");
+    var modals4 = document.getElementById("M4");
+    var modals5 = document.getElementById("M5");
 
     // Get the button that opens the modal
-    // let btn = document.getElementById("myBtn");
-    // let btn2 = document.getElementById("yourBtn");
+    // var btn = document.getElementById("myBtn");
+    // var btn2 = document.getElementById("yourBtn");
+    // var btn3 = document.getElementById("nextBtn");
 
-    // Get the <span> element that closes the modal
-    let span = document.getElementsByClassName("close1")[0];
-    let span2 = document.getElementsByClassName("close2")[0];
 
     // When the user clicks the button, open the modal
     // btn.onclick = function () {
-    //     modal.style.display = "block";
+    //     modal.style.display = "flex";
     // }
     // btn2.onclick = function () {
-    //     modal2.style.display = "block";
+    //     modal2.style.display = "flex";
+    // }
+    // btn3.onclick = function () {
+    //     modal3.style.display = "flex";
     // }
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-    span2.onclick = function () {
-        modal2.style.display = "none";
-    }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
@@ -112,6 +210,44 @@
         if (event.target === modal2) {
             modal2.style.display = "none";
         }
+        if (event.target === modal3) {
+            modal3.style.display = "none";
+        }
+    }
+
+    //audio-DO-NOT-REMOVE
+    function playblue() {
+        let x = document.createElement("audio");
+        x.src = "audio/blue.mp3";
+        x.setAttribute("loop", "loop");
+        document.body.addEventListener("mousemove", function () {
+            x.play();
+        })
+    }
+
+    function bricktouch() {
+        let x = document.createElement("audio");
+        x.src = "audio/bricktouch.wav";
+        x.play();
+    }
+
+    function gameover() {
+        let x = document.createElement("audio");
+        x.src = "audio/gameover.wav";
+        x.play();
+    }
+
+    function jump() {
+        let x = document.createElement("audio");
+        x.src = "audio/jump.wav";
+        x.play();
+    }
+
+    function brickbroken() {
+        let x = document.createElement("audio");
+        x.src = "audio/brickbroken.wav";
+        x.play();
     }
 </script>
+</body>
 </html>
