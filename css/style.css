@@ -211,10 +211,12 @@ body {
     align-items: center;
 }
 
-.next {
+.nextcard {
     position: absolute;
-    right: 2%;
+    right: 4%;
     top: 45%;
+    height: 50px;
+    width: 100px;
     display: flex;
     background-image: url(../img/nextbtn.gif);    
 }
@@ -267,7 +269,18 @@ body {
     color: #cfff00;
     text-shadow: 0 0 20px #cfff00;
 }
-
+.stars{
+    display: flex;
+    justify-content: center;
+}
+.s1,.s2,.s3{
+    width: 110px;
+    height: 100px;
+    background: #050a30;
+}
+.star{
+    background: transparent;
+}
 .playagain {
     width: 100%;
     height: 100px;
@@ -310,6 +323,10 @@ body {
     background-image: url("../img/next.gif");
     background-size: cover;
     background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-c3 .modal-body {

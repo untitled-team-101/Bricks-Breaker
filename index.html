@@ -9,71 +9,7 @@
     <script src="js/script.js" defer></script>
 </head>
 <body onload="playblue()">
-<div id="M1" class="modal active">
 
-    <!-- Modal content -->
-    <div class="modal-content modal-s">
-        <div class="storycenter">
-            <div class="story-img img1"></div>
-            <div class="story-text ">Hi, I am Blob.</div>
-
-        </div>
-        <div class="next">
-
-        </div>
-    </div>
-
-</div>
-<div id="M2" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content modal-s">
-        <div class="storycenter">
-            <div class="story-img img2"></div>
-            <div class="story-text">I live in space and i am stuck in a very heavy problem.</div>
-        </div>
-
-    </div>
-
-</div>
-<div id="M3" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content modal-s">
-        <div class="storycenter">
-            <div class="story-img img3">
-
-            </div>
-            <div class="story-text">I lost five of my magic gems in the space.</div>
-        </div>
-
-    </div>
-
-</div>
-<div id="M4" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content modal-s">
-        <div class="storycenter">
-            <div class="story-img img4"></div>
-            <div class="story-text">if it get in the wrong hands it can destroy whole universe</div>
-        </div>
-
-    </div>
-
-</div>
-<div id="M5" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content modal-s">
-        <div class="storycenter">
-            <div class="story-img img5"></div>
-            <div class="story-text">I need you to find my gems</div>
-        </div>
-
-    </div>
-
-</div>
 <div id="startModal" class="modal">
 
     <!-- Modal content -->
@@ -92,6 +28,81 @@
     </div>
 
 </div>
+<div id="M1" class="modal active">
+
+    <!-- Modal content -->
+    <div class="modal-content modal-s">
+        <div class="storycenter">
+            <div class="story-img img1"></div>
+            <div class="story-text ">Hi, I am Glob.</div>
+        </div>
+        <div class="nextcard">
+
+        </div>
+    </div>
+
+</div>
+
+<div id="M2" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content modal-s">
+        <div class="storycenter">
+            <div class="story-img img2"></div>
+            <div class="story-text">I live in space and i am stuck in a very heavy problem.</div>
+        </div>
+        <div class="nextcard">
+
+        </div>
+    </div>
+
+</div>
+
+<div id="M3" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content modal-s">
+        <div class="storycenter">
+            <div class="story-img img3">
+
+            </div>
+            <div class="story-text">I lost five of my magic gems in the space.</div>
+        </div>
+        <div class="nextcard">
+
+        </div>
+    </div>
+
+</div>
+<div id="M4" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content modal-s">
+        <div class="storycenter">
+            <div class="story-img img4"></div>
+            <div class="story-text">If it get in the wrong hands it can destroy whole universe.</div>
+        </div>
+        <div class="nextcard">
+
+        </div>
+    </div>
+
+</div>
+<div id="M5" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content modal-s">
+        <div class="storycenter">
+            <div class="story-img img5"></div>
+            <div class="story-text">I need you to find my gems</div>
+        </div>
+        <div class="nextcard">
+
+        </div>
+    </div>
+
+</div>
+
 <div id="endModal" class="modal">
 
     <!-- Modal content -->
@@ -109,7 +120,14 @@
 
     <!-- Modal content -->
     <div class="modal-content modal-c3">
-
+        <div class="stars">
+            <div class="s1 star">
+            </div>
+            <div class="s2">
+            </div>
+            <div class="s3">
+            </div>
+        </div>
         <div class="modal-body">
             <div class="home">
             </div>
@@ -158,6 +176,11 @@
     var modal = document.getElementById("startModal");
     var modal2 = document.getElementById("endModal");
     var modal3 = document.getElementById("nextModal");
+    var modals1 = document.getElementById("M1");
+    var modals2 = document.getElementById("M2");
+    var modals3 = document.getElementById("M3");
+    var modals4 = document.getElementById("M4");
+    var modals5 = document.getElementById("M5");
 
     // Get the button that opens the modal
     // var btn = document.getElementById("myBtn");
@@ -195,7 +218,9 @@
         let x = document.createElement("audio");
         x.src = "audio/blue.mp3";
         x.setAttribute("loop", "loop");
-        x.play();
+        document.body.addEventListener("mousemove", function () {
+            x.play();
+        })
     }
 
     function bricktouch() {
