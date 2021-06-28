@@ -124,7 +124,7 @@ body {
     position: absolute;
     height: 4vh;
     width: 4vh;
-    background-color: black;
+    background-color: red;
     left: calc(var(--power-up-left) * 1px);
     top: calc(var(--power-up-top) * 1px);
 }
