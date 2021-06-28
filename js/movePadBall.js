@@ -18,9 +18,9 @@ let ballsDirection = {
 mainContainer.addEventListener("mousemove", (event) => {
     let padLeft = event.clientX - event.target.offsetLeft
     padLeft -= pad.offsetWidth / 2
-    if(padLeft < 0)
+    if (padLeft < 0)
         return
-    if(padLeft > event.target.offsetWidth - pad.offsetWidth - 2)
+    if (padLeft > event.target.offsetWidth - pad.offsetWidth - 2)
         return
     mainContainer.style.setProperty("--pad-left", padLeft.toString())
     if (gameRunning === 0) {
@@ -41,7 +41,7 @@ const onLifeGone = () => {
     gameRunning = 0
     clearInterval(timerId)
     ballTop = pad.offsetTop - ball.offsetHeight;
-    ballLeft = pad.offsetLeft + pad.offsetWidth/2 - ball.offsetWidth/2;
+    ballLeft = pad.offsetLeft + pad.offsetWidth / 2 - ball.offsetWidth / 2;
     mainContainer.style.setProperty("--ball-left", ballLeft.toString())
     mainContainer.style.setProperty("--ball-top", ballTop.toString())
 }
@@ -49,16 +49,15 @@ const onLifeGone = () => {
 const onBallDropped = () => {
     ballsLife--;
     console.log("life gone")
-    if(ballsLife === 0){
+    if (ballsLife === 0) {
         console.log("game over")
-        // alert("game over")
+            // alert("game over")
         clearInterval(timerId)
         ballsDirection = {
             left: 0,
             top: 0
         }
-    }
-    else {
+    } else {
         onLifeGone()
     }
 }
@@ -74,72 +73,68 @@ const getCollisionBetween = (element1, element2) => {
     let bottom1 = top1 + element1.offsetHeight
     let bottom2 = top2 + element2.offsetHeight
 
-    if(right1 > left2 && right1 < right2){
+    if (right1 > left2 && right1 < right2) {
         //ltr collision
-        if(bottom1 > top2 && bottom1 < bottom2){
+        if (bottom1 > top2 && bottom1 < bottom2) {
             //ttb collision
-            if(bottom1 - top2 > right1 - left2){
+            if (bottom1 - top2 > right1 - left2) {
                 console.log("111")
                 return "ltr"
-            }
-            else {
+            } else {
                 console.log("112")
                 return "ttb"
             }
         }
-        if(top1 < bottom2 && top1 > top2){
+        if (top1 < bottom2 && top1 > top2) {
             //btt collision
-            if(top1 - bottom2 > right1 - left2){
+            if (top1 - bottom2 > right1 - left2) {
                 console.log("121")
                 return "ltr"
-            }
-            else{
+            } else {
                 console.log("122")
                 return "btt"
             }
         }
     }
-    if(left1 < right2 && left1 > left2){
+    if (left1 < right2 && left1 > left2) {
         //rtl collision
-        if(bottom1 > top2 && bottom1 < bottom2){
+        if (bottom1 > top2 && bottom1 < bottom2) {
             //ttb collision
-            if(bottom1 - top2 > right2 - left1){
+            if (bottom1 - top2 > right2 - left1) {
                 console.log("211")
                 return "rtl"
-            }
-            else{
+            } else {
                 console.log("212")
                 return "ttb"
             }
         }
-        if(top1 < bottom2 && top1 > top2){
+        if (top1 < bottom2 && top1 > top2) {
             //btt collision
-            if(top1 - bottom2 > right2 - left1){
+            if (top1 - bottom2 > right2 - left1) {
                 console.log("221")
                 return "rtl"
-            }
-            else{
+            } else {
                 console.log("222")
                 return "btt"
             }
         }
     }
     return false
-    // return type [1/0/-1, 1/0/-1] i.e. [ttb//btt, ltr//rtl]
+        // return type [1/0/-1, 1/0/-1] i.e. [ttb//btt, ltr//rtl]
 }
 
 const checkPadCollision = () => {
-    if(getCollisionBetween(ball, pad)){
-        padCollisionPoint = ball.offsetLeft + ball.offsetWidth/2;
-        if (padCollisionPoint < (pad.offsetLeft + pad.offsetWidth/4)) {
+    if (getCollisionBetween(ball, pad)) {
+        padCollisionPoint = ball.offsetLeft + ball.offsetWidth / 2;
+        if (padCollisionPoint < (pad.offsetLeft + pad.offsetWidth / 4)) {
             ballsDirection.left = -Math.sqrt(14)
             ballsDirection.top = -2
             console.log("1")
-        } else if (padCollisionPoint < (pad.offsetLeft + pad.offsetWidth/2)){
+        } else if (padCollisionPoint < (pad.offsetLeft + pad.offsetWidth / 2)) {
             ballsDirection.left = -2
             ballsDirection.top = -Math.sqrt(14)
             console.log("2")
-        } else if (padCollisionPoint >= (pad.offsetLeft + pad.offsetWidth/2) && padCollisionPoint < (pad.offsetLeft + pad.offsetWidth/4*3)){
+        } else if (padCollisionPoint >= (pad.offsetLeft + pad.offsetWidth / 2) && padCollisionPoint < (pad.offsetLeft + pad.offsetWidth / 4 * 3)) {
             ballsDirection.left = 2
             ballsDirection.top = -Math.sqrt(14)
             console.log("3")
@@ -153,11 +148,13 @@ const checkPadCollision = () => {
     }
 }
 
-const onCollisionWithBrick = (ball, brick,collision) => {
+const onCollisionWithBrick = (ball, brick, collision) => {
     if (ball.classList.contains('powerball')) {
         if (brick.classList.contains('l1')) {
+            brickbroken()
             brick.classList.remove('l1');
             brick.classList.add("broken");
+            brick.classList.add("l0");
             if (brick.classList.contains('power')) {
                 dropPower(brick);
             }
@@ -168,17 +165,20 @@ const onCollisionWithBrick = (ball, brick,collision) => {
             brick.classList.remove('l3');
             brick.classList.add('l1');
         } else if (brick.classList.contains('l2')) {
+            brickbroken()
             brick.classList.remove('l2');
             brick.classList.add("broken");
+            brick.classList.add("l0");
             if (brick.classList.contains('power')) {
                 dropPower(brick);
             }
         }
-    }
-    else {
+    } else {
         if (brick.classList.contains('l1')) {
+            brickbroken()
             brick.classList.remove('l1');
             brick.classList.add("broken");
+            brick.classList.add("l0");
             if (brick.classList.contains('power')) {
                 dropPower(brick);
             }
@@ -197,40 +197,40 @@ const onCollisionWithBrick = (ball, brick,collision) => {
 
 let ignoreBrickCollision = false
 const checkBrickCollision = () => {
-    if(ignoreBrickCollision)
+    if (ignoreBrickCollision)
         return
-    for(let brick of bricks){
-        if(ignoreBrickCollision)
+    for (let brick of bricks) {
+        if (ignoreBrickCollision)
             return
-        if(brick.classList.contains("broken"))
+        if (brick.classList.contains("broken"))
             continue
 
         let collision = getCollisionBetween(ball, brick)
 
-        if(!collision)
+        if (!collision)
             continue
 
-        onCollisionWithBrick(ball, brick,collision);
+        onCollisionWithBrick(ball, brick, collision);
         ignoreBrickCollision = true
-        setTimeout(()=> {
+        setTimeout(() => {
             ignoreBrickCollision = false
-        }, ballMoveDelay*2)
+        }, ballMoveDelay * 2)
 
-        if(collision === "rtl" || collision === "ltr")
+        if (collision === "rtl" || collision === "ltr")
             ballsDirection.left *= -1
-        if(collision === "ttb" || collision === "btt")
+        if (collision === "ttb" || collision === "btt")
             ballsDirection.top *= -1
     }
 }
 
 const checkWallCollision = () => {
-    if(ballLeft > mainContainer.offsetWidth - ball.offsetWidth - 1)
+    if (ballLeft > mainContainer.offsetWidth - ball.offsetWidth - 1)
         ballsDirection.left *= -1
-    if(ballLeft <  1)
+    if (ballLeft < 1)
         ballsDirection.left *= -1
-    if(ballTop < 1)
+    if (ballTop < 1)
         ballsDirection.top *= -1
-    if(ballTop > mainContainer.offsetHeight - ball.offsetWidth - 1)
+    if (ballTop > mainContainer.offsetHeight - ball.offsetWidth - 1)
         onBallDropped()
 }
 
@@ -250,7 +250,7 @@ const moveBall = () => {
 }
 
 function checkEndgame() {
-    if(document.querySelectorAll('.broken').length === bricks.length){
+    if (document.querySelectorAll('.broken').length === bricks.length) {
         console.log('Game Finished');
         clearInterval(timerId);
         ball.style.opacity = '0';
@@ -270,6 +270,6 @@ mainContainer.addEventListener("click", (event) => {
 })
 
 ballTop = pad.offsetTop - ball.offsetHeight;
-ballLeft = pad.offsetWidth/2 - ball.offsetWidth/2;
+ballLeft = pad.offsetWidth / 2 - ball.offsetWidth / 2;
 mainContainer.style.setProperty("--ball-left", ballLeft.toString())
 mainContainer.style.setProperty("--ball-top", ballTop.toString())
