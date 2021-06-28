@@ -22,15 +22,13 @@ function generateFakeBricks(n) {
 
 function generateLevelOne()
 {
-    generateBricks(10,'l2');
-    generateBricks(10,'l1');
-    generateBricks(10,'l2');
-    generateBricks(10,'l1');
-    generateFakeBricks(10);
     generateBricks(10,'l1');
     generateFakeBricks(10);
     generateBricks(10,'l2');
-
+    generateFakeBricks(10);
+    generateBricks(10,'l1')
+    generateFakeBricks(10);
+    generateBricks(20,'l1')
 }
 
 function generateLevelTwo()
