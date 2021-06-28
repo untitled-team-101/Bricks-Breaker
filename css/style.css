@@ -238,8 +238,9 @@ body {
 
 }
 
-#M1 {
+#M1,#M2,#M3,#M4,#M5 {
     align-items: center;
+    cursor: pointer;
 }
 
 .nextcard {
@@ -480,4 +481,7 @@ body {
     background-image: url("../img/story.gif");
     background-size: cover;
     background-position: center;
+}
+.next{
+    cursor: pointer;
 }

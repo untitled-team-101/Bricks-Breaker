@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title>Brick Breaker Game</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/integrate.js" defer></script>
     <script src="js/generateBricks.js" defer></script>
     <script src="js/powerUp.js" defer></script>
     <script src="js/movePadBall.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/glitch.css">
-    <script src="js/script.js" defer></script>
 </head>
 <body onload="playblue()">
-<div id="startModal" class="modal">
+<div id="startModal" class="modal active">
 
     <!-- Modal content -->
     <div class="modal-content modal-c1">
@@ -30,7 +30,7 @@
     </div>
 
 </div>
-<div id="M1" class="modal active">
+<div id="M1" class="modal">
 
     <!-- Modal content -->
     <div class="modal-content modal-s">
@@ -133,9 +133,9 @@
         <div class="modal-body">
             <div class="home">
             </div>
-            <div class="restart">
-            </div>
             <div class="next">
+            </div>
+            <div class="restart">
             </div>
         </div>
     </div>
@@ -167,10 +167,10 @@
 </div>
 <div class="score-container">
     <div class="lives">
-        Lives: <span id="lives">2</span>
+        Lives: <span id="lives">3</span>
     </div>
     <div class="score">
-        Score: <span id="score">10000</span>
+        Score: <span id="score">0</span>
     </div>
 </div>
 <script>

@@ -233,7 +233,7 @@ function checkEndgame() {
     if(document.querySelectorAll('.broken').length === bricks.length){
         console.log('Game Finished');
         clearInterval(timerId);
-        ball.style.opacity = '0';
+        nextLevel();
     }
 }
 
