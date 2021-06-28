@@ -8,10 +8,12 @@
     font-family: 'chopsic';
     src: url('../fonts/Chopsic.ttf');
 }
+
 @font-face {
     font-family: 'Lovelo';
     src: url('../fonts/Lovelo Line Bold.otf');
 }
+
 @font-face {
     font-family: 'squartiqa';
     src: url('../fonts/Squartiqa4F.ttf');
@@ -86,7 +88,7 @@ body {
     position: absolute;
     bottom: 5vh;
     left: 500px;
-    background: rgb(0,0,0);
+    background: rgb(0, 0, 0);
     border: 3px solid #cfff00;
     box-shadow: inset 0 0 20px #cfff00;
     display: flex;
@@ -103,7 +105,7 @@ body {
     background-color: black;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
-    transform: translate(-5px,0);
+    transform: translate(-5px, 0);
 }
 
 .rightpad {
@@ -114,7 +116,7 @@ body {
     background-color: black;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
-    transform: translate(5px,0);
+    transform: translate(5px, 0);
 }
 
 .l4 {
@@ -163,7 +165,7 @@ body {
     }
 }
 
-.animateball{
+.animateball {
     animation: powerball 10s infinite linear;
 }
 
@@ -183,11 +185,11 @@ body {
     }
 }
 
-.startbtn{
+.startbtn {
     height: 23%;
     width: 100%;
     position: absolute;
-    bottom:27%;
+    bottom: 27%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -195,7 +197,7 @@ body {
 }
 
 
-.home,.restart,.next{
+.home, .restart, .next {
     width: 130px;
     height: 70px;
     padding: 10px;
@@ -204,7 +206,8 @@ body {
     align-items: center;
 
 }
-#M1{
+
+#M1 {
     align-items: center;
 }
 
@@ -218,39 +221,46 @@ body {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,.5); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, .5); /* Black w/ opacity */
 }
-.title{
+
+.title {
     font-family: squartiqa, serif;
     color: #88ff55;
     font-size: 2.5rem;
     text-align: center;
 }
-.titlediv{
+
+.titlediv {
     width: 100%;
     display: flex;
     position: absolute;
     top: 30%;
     justify-content: center;
 }
-.startbtn{
+
+.startbtn {
     display: flex;
     justify-content: space-evenly;
 }
-.play-text,.game-text{
+
+.play-text, .game-text {
     font-family: Lovelo, serif;
     font-size: 4rem;
 }
-.play-text{
+
+.play-text {
     color: #ec00ff;
     text-shadow: 0 0 20px #ec00ff;
 }
-.game-text{
+
+.game-text {
     color: #cfff00;
     text-shadow: 0 0 20px #cfff00;
 }
-.playagain{
+
+.playagain {
     width: 100%;
     height: 100px;
     position: absolute;
@@ -259,6 +269,7 @@ body {
     cursor: pointer;
     bottom: 25%;
 }
+
 /* Modal Content */
 .modal-content {
     position: relative;
@@ -274,22 +285,26 @@ body {
     animation-name: animatetop;
     animation-duration: .4s;
 }
-.modal-c1{
+
+.modal-c1 {
     background-image: url("../img/start.gif");
     background-size: cover;
     background-position: center;
 }
-.modal-c2{
+
+.modal-c2 {
     background-image: url("../img/end.gif");
     background-size: cover;
     background-position: center;
 }
-.modal-c3{
+
+.modal-c3 {
     background-image: url("../img/next.gif");
     background-size: cover;
     background-position: center;
 }
-.modal-c3 .modal-body{
+
+.modal-c3 .modal-body {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -299,13 +314,25 @@ body {
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
-    from {transform: scale(0); opacity:0}
-    to {transform: scale(1); opacity:1}
+    from {
+        transform: scale(0);
+        opacity: 0
+    }
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
 }
 
 @keyframes animatetop {
-    from {transform: scale(0); opacity:0}
-    to {transform: scale(1); opacity:1}
+    from {
+        transform: scale(0);
+        opacity: 0
+    }
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
 }
 
 /* The Close Button */
@@ -340,4 +367,61 @@ body {
     padding: 2px 16px;
     background-color: #4339ff;
     color: white;
+}
+
+.storycenter {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.story-img {
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    flex-basis: 30%;
+}
+
+.story-text {
+    flex-basis: 70%;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+.active{
+    display: flex;
+    animation: cards 2s ease;
+}
+@keyframes cards {
+    from{
+        transform: translate(1500px,0);
+    }
+    to{
+        transform: translate(0,0);
+    }
+}
+.img1 {
+    background-image: url("../img/s1.webp");
+}
+.img2 {
+    background-image: url("../img/s2.webp");
+}
+.img3 {
+    background-image: url("../img/s3.gif");
+}
+.img4 {
+    background-image: url("../img/s4.gif");
+}
+.img5 {
+    background-image: url("../img/s5.webp");
+}
+
+.modal-s {
+    background-image: url("../img/story.gif");
+    background-size: cover;
+    background-position: center;
 }
