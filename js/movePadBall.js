@@ -8,7 +8,7 @@ let ballTop = 0
 let ballLeft = 0
 let ballMoveDelay = 10;
 let padCollisionPoint = 0;
-let ballsLife = 100;
+let ballsLife = 3;
 let timerId = 0;
 let ballsDirection = {
     left: 0,
@@ -50,6 +50,7 @@ const onBallDropped = () => {
     ballsLife--;
     console.log("life gone")
     if (ballsLife === 0) {
+        gameover()
         console.log("game over")
             // alert("game over")
         clearInterval(timerId)
@@ -125,6 +126,7 @@ const getCollisionBetween = (element1, element2) => {
 
 const checkPadCollision = () => {
     if (getCollisionBetween(ball, pad)) {
+        jump()
         padCollisionPoint = ball.offsetLeft + ball.offsetWidth / 2;
         if (padCollisionPoint < (pad.offsetLeft + pad.offsetWidth / 4)) {
             ballsDirection.left = -Math.sqrt(14)
@@ -149,6 +151,7 @@ const checkPadCollision = () => {
 }
 
 const onCollisionWithBrick = (ball, brick, collision) => {
+    bricktouch()
     if (ball.classList.contains('powerball')) {
         if (brick.classList.contains('l1')) {
             brickbroken()
