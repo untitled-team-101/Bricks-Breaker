@@ -154,24 +154,44 @@ const checkPadCollision = () => {
 }
 
 const onCollisionWithBrick = (ball, brick,collision) => {
-    if(brick.classList.contains('l1')) {
-        brick.classList.remove('l1');
-        brick.classList.add("broken");
-        if (brick.classList.contains('power')) {
-            dropPower(brick);
+    if (ball.classList.contains('powerball')) {
+        if (brick.classList.contains('l1')) {
+            brick.classList.remove('l1');
+            brick.classList.add("broken");
+            if (brick.classList.contains('power')) {
+                dropPower(brick);
+            }
+        } else if (brick.classList.contains('l4')) {
+            brick.classList.remove('l4');
+            brick.classList.add('l2');
+        } else if (brick.classList.contains('l3')) {
+            brick.classList.remove('l3');
+            brick.classList.add('l1');
+        } else if (brick.classList.contains('l2')) {
+            brick.classList.remove('l2');
+            brick.classList.add("broken");
+            if (brick.classList.contains('power')) {
+                dropPower(brick);
+            }
         }
     }
-    else if(brick.classList.contains('l4')) {
-        brick.classList.remove('l4');
-        brick.classList.add('l3');
-    }
-    else if(brick.classList.contains('l3')) {
-        brick.classList.remove('l3');
-        brick.classList.add('l2');
-    }
-    else if(brick.classList.contains('l2')) {
-        brick.classList.remove('l2');
-        brick.classList.add('l1');
+    else {
+        if (brick.classList.contains('l1')) {
+            brick.classList.remove('l1');
+            brick.classList.add("broken");
+            if (brick.classList.contains('power')) {
+                dropPower(brick);
+            }
+        } else if (brick.classList.contains('l4')) {
+            brick.classList.remove('l4');
+            brick.classList.add('l3');
+        } else if (brick.classList.contains('l3')) {
+            brick.classList.remove('l3');
+            brick.classList.add('l2');
+        } else if (brick.classList.contains('l2')) {
+            brick.classList.remove('l2');
+            brick.classList.add('l1');
+        }
     }
 }
 
