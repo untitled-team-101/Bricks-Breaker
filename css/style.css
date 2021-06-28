@@ -211,6 +211,14 @@ body {
     align-items: center;
 }
 
+.next {
+    position: absolute;
+    right: 2%;
+    top: 45%;
+    display: flex;
+    background-image: url(../img/nextbtn.gif);    
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
