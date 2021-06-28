@@ -75,7 +75,7 @@ function nextLevel(){
         bricks = document.querySelectorAll(".brick")
         gameRunning = 0;
         padCollisionPoint = 0;
-        ballsLife = 100;
+        ballsLife = maxLives;
         timerId = 0;
         ballsDirection = {
             left: 0,
@@ -85,9 +85,15 @@ function nextLevel(){
         ballLeft = pad.offsetLeft + pad.offsetWidth/2 - ball.offsetWidth/2;
         mainContainer.style.setProperty("--ball-left", ballLeft.toString())
         mainContainer.style.setProperty("--ball-top", ballTop.toString())
+        document.getElementById("score").innerText = totalScore.toString()
+        document.getElementById("lives").innerText = ballsLife.toString()
         clearInterval(timerId);
     })
 }
+
+
+document.getElementById("score").innerText = totalScore.toString()
+document.getElementById("lives").innerText = ballsLife.toString()
 
 
 
