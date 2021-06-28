@@ -34,8 +34,6 @@ modals5.addEventListener('click',function (){
     startModal.classList.remove('active');
 })
 
-
-
 let currentLevel = 1;
 function nextLevel(){
     brick_container.innerHTML = '';
@@ -68,6 +66,7 @@ function nextLevel(){
             generateLevelFive();
             ballMoveDelay = 4;
         }
+        generatePowers();
         currentLevel++;
         nextModal.classList.remove('active');
         mainContainer = document.querySelector(".main-container")

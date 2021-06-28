@@ -124,11 +124,17 @@ body {
     position: absolute;
     height: 4vh;
     width: 4vh;
-    background-color: red;
+    background-color: #FFBF00;
+    color: red;
+    font-size: 3vh;
+    font-weight: bold;
+    text-align: center;
+    line-height: 4vh;
+    /*font-family: Arial;*/
+    border-radius: 100%;
     left: calc(var(--power-up-left) * 1px);
     top: calc(var(--power-up-top) * 1px);
 }
-
 
 .leftpad {
     height: 130%;

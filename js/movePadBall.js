@@ -6,10 +6,11 @@ let bricks = document.querySelectorAll(".brick")
 let gameRunning = 0;
 let ballTop = 0
 let ballLeft = 0
-let ballMoveDelay = 10;
+let ballMoveDelay = 5;
 let padCollisionPoint = 0;
-let ballsLife = 3;
+let ballsLife = 5;
 let timerId = 0;
+let totalScore = 0
 let ballsDirection = {
     left: 0,
     top: 0
@@ -49,6 +50,7 @@ const onLifeGone = () => {
 const onBallDropped = () => {
     ballsLife--;
     console.log("life gone")
+    document.getElementById("lives").innerText = ballsLife.toString()
     if (ballsLife === 0) {
         gameover()
         console.log("game over")
@@ -152,6 +154,8 @@ const checkPadCollision = () => {
 
 const onCollisionWithBrick = (ball, brick, collision) => {
     bricktouch()
+    totalScore += 100
+    document.getElementById("score").innerText = totalScore.toString()
     if (ball.classList.contains('powerball')) {
         if (brick.classList.contains('l1')) {
             brickbroken()

@@ -1,17 +1,16 @@
-let brick = document.querySelectorAll('.brick');
-let number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 10, 11, 12];
 
 function generatePowers() {
-    for (let i of brick) {
-        let numb = number[Math.floor(Math.random() * number.length)];
-        if (numb === 0) {
+    for (let i of document.querySelectorAll('.brick')) {
+        if(i.classList.contains("broken"))
+            continue
+        let numb = Math.floor(Math.random() * 12)
+        if (numb === 5) {
             i.classList.add('power');
             i.classList.add('bigBall');
+            console.log("power added to b")
         }
     }
 }
-
-generatePowers();
 
 const dropPower = function(brick) {
     if (brick.classList.contains('bigBall')) {
@@ -25,7 +24,7 @@ const dropPower = function(brick) {
         console.log(powerupTop, powerupLeft, brick.offsetTop, brick.offsetLeft)
         powerup.style.setProperty("--power-up-top", powerupTop.toString())
         powerup.style.setProperty("--power-up-left", powerupLeft.toString())
-
+        powerup.append("P")
         const a = setInterval(() => {
             powerupTop += 2;
             powerup.style.setProperty("--power-up-top", powerupTop.toString())
