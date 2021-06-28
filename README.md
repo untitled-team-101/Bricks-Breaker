@@ -11,12 +11,12 @@ Bricks Breaker Game - A fun game made with HTML5, CSS3 and JavaScript
 ![screenshot 4](https://raw.githubusercontent.com/untitled-team-101/Bricks-Breaker/readme-docs/assests/screenshots/ss4.png)
 
 # Demo
-![demo]()
+![Demo](https://drive.google.com/file/d/1REvxDIAToVZe9XrFpBQAhUiHMTI60oK6/view?usp=sharing)
 
 # Contributors
-- ![Ayan Dhara](https://github.com/Ayan-Dhara)
-- ![Grawish Sachdeva](https://github.com/grawish)
-- ![Tanmay Vaish](https://github.com/LEON6156SCOTT)
-- ![Dhruv Garg](https://github.com/dhruvgarg02)
-- ![Sarvesh Patil](https://github.com/sarveshspatil111)
-- ![Anjali Goswami](https://github.com/anjaligoswami)
+- [Ayan Dhara](https://github.com/Ayan-Dhara)
+- [Grawish Sachdeva](https://github.com/grawish)
+- [Tanmay Vaish](https://github.com/LEON6156SCOTT)
+- [Dhruv Garg](https://github.com/dhruvgarg02)
+- [Sarvesh Patil](https://github.com/sarveshspatil111)
+- [Anjali Goswami](https://github.com/anjaligoswami)
