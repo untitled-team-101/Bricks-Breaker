@@ -4,49 +4,64 @@
     <meta charset="UTF-8">
     <title>Brick Breaker Game</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/glitch.css">
     <script src="js/script.js" defer></script>
 </head>
-<body>
-<div id="myModal" class="modal">
+<body onload="playblue()">
+<div id="M1" class="modal" style="display: flex">
 
     <!-- Modal content -->
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close close1">&times;</span>
-            <h2>Tatti sa UI</h2>
+    <div class="modal-content modal-c1">
+        <div class="center">
+            <img src="dc652dda-502b-4a75-8b70-6775530a5a59.webp">
         </div>
+
+    </div>
+
+</div>
+<div id="startModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content modal-c1">
+        <div class="titlediv">
+            <h1 class="title glitch" data-glitch="Brick Breaker">
+                Brick Breaker
+            </h1>
+
+        </div>
+        <div class="startbtn">
+            <h1 class="play-text">Play</h1>
+            <h1 class="game-text">Game</h1>
+        </div>
+
+    </div>
+
+</div>
+<div id="endModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content modal-c2">
+
         <div class="modal-body">
-            <div class="startbtn">
-                Start Game
+            <div class="playagain">
+
             </div>
-        </div>
-        <div class="modal-footer">
-            <h3>Modal Footer</h3>
         </div>
     </div>
 
 </div>
-<div id="yourModal" class="modal">
+<div id="nextModal" class="modal">
 
     <!-- Modal content -->
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close close2">&times;</span>
-            <h2>Tatti sa UI</h2>
-        </div>
+    <div class="modal-content modal-c3">
+
         <div class="modal-body">
             <div class="home">
-                home
             </div>
             <div class="restart">
-                restart
             </div>
             <div class="next">
-                next
             </div>
-        </div>
-        <div class="modal-footer">
-            <h3>Modal Footer</h3>
         </div>
     </div>
 
@@ -55,19 +70,22 @@
     <div class="brick-container">
 
     </div>
-    <div id="ball" class="powerball">
+    <div id="ball" class="animateball">
     </div>
     <div id="pad">
         <div class="leftpad">
-            <button id="myBtn">
-                start
-            </button>
+            <!--            <button id="myBtn">-->
+            <!--                start-->
+            <!--            </button>-->
 
         </div>
+        <!--        <button id="nextBtn">-->
+        <!--            next-->
+        <!--        </button>-->
         <div class="rightpad">
-            <button id="yourBtn">
-                end
-            </button>
+            <!--            <button id="yourBtn">-->
+            <!--                end-->
+            <!--            </button>-->
         </div>
     </div>
 
@@ -82,32 +100,27 @@
 </div>
 <script>
     // Get the modal
-    var modal = document.getElementById("myModal");
-    var modal2 = document.getElementById("yourModal");
+    var modal = document.getElementById("startModal");
+    var modal2 = document.getElementById("endModal");
+    var modal3 = document.getElementById("nextModal");
 
     // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-    var btn2 = document.getElementById("yourBtn");
+    // var btn = document.getElementById("myBtn");
+    // var btn2 = document.getElementById("yourBtn");
+    // var btn3 = document.getElementById("nextBtn");
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close1")[0];
-    var span2 = document.getElementsByClassName("close2")[0];
 
     // When the user clicks the button, open the modal
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
-    btn2.onclick = function () {
-        modal2.style.display = "block";
-    }
+    // btn.onclick = function () {
+    //     modal.style.display = "flex";
+    // }
+    // btn2.onclick = function () {
+    //     modal2.style.display = "flex";
+    // }
+    // btn3.onclick = function () {
+    //     modal3.style.display = "flex";
+    // }
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-    span2.onclick = function () {
-        modal2.style.display = "none";
-    }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
@@ -117,6 +130,41 @@
         if (event.target === modal2) {
             modal2.style.display = "none";
         }
+        if (event.target === modal3) {
+            modal3.style.display = "none";
+        }
+    }
+
+    //audio-DO-NOT-REMOVE
+    function playblue() {
+        let x = document.createElement("audio");
+        x.src = "audio/blue.mp3";
+        x.setAttribute("loop", "loop");
+        x.play();
+    }
+
+    function bricktouch() {
+        let x = document.createElement("audio");
+        x.src = "audio/bricktouch.wav";
+        x.play();
+    }
+
+    function gameover() {
+        let x = document.createElement("audio");
+        x.src = "audio/gameover.wav";
+        x.play();
+    }
+
+    function jump() {
+        let x = document.createElement("audio");
+        x.src = "audio/jump.wav";
+        x.play();
+    }
+
+    function brickbroken() {
+        let x = document.createElement("audio");
+        x.src = "audio/brickbroken.wav";
+        x.play();
     }
 </script>
 </body>

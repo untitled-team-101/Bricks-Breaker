@@ -8,13 +8,21 @@
     font-family: 'chopsic';
     src: url('../fonts/Chopsic.ttf');
 }
+@font-face {
+    font-family: 'Lovelo';
+    src: url('../fonts/Lovelo Line Bold.otf');
+}
+@font-face {
+    font-family: 'squartiqa';
+    src: url('../fonts/Squartiqa4F.ttf');
+}
 
 body {
     display: flex;
     align-content: center;
     align-items: center;
     justify-content: center;
-    background-image: url("../img/bg.webp");
+    background-image: url("../img/bg.gif");
     background-size: cover;
 }
 
@@ -37,9 +45,10 @@ body {
 
 .brick {
     height: 5vh;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 1%, rgba(200, 200, 200, 1) 21%, rgba(255, 255, 255, 1) 100%);
-    box-shadow: inset 0 0 5px #000;
+    background: rgb(0, 0, 0);
+    /*background: linear-gradient(180deg, rgba(255, 255, 255, 1) 1%, rgba(200, 200, 200, 1) 21%, rgba(255, 255, 255, 1) 100%);*/
+    box-shadow: 0 0 5px #000;
+    border-radius: 10px;
 }
 
 .score-container {
@@ -56,7 +65,7 @@ body {
 
 .score-container div {
     font-family: chopsic, serif;
-    font-size: 4vh;
+    font-size: 3vh;
 }
 
 #ball {
@@ -72,14 +81,14 @@ body {
 }
 
 #pad {
-    width: 15vw;
-    height: 3vh;
+    width: 190px;
+    height: 25px;
     position: absolute;
     bottom: 5vh;
     left: 500px;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(208, 208, 208, 1) 100%);
-    border: 1px solid black;
+    background: rgb(0,0,0);
+    border: 3px solid #cfff00;
+    box-shadow: inset 0 0 20px #cfff00;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -89,37 +98,43 @@ body {
 .leftpad {
     height: 130%;
     width: 20%;
-    background-color: red;
+    box-shadow: inset 0 0 20px #ec00ff;
+    border: 3px solid #ec00ff;
+    background-color: black;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
+    transform: translate(-5px,0);
 }
 
 .rightpad {
     height: 130%;
     width: 20%;
-    background-color: red;
+    box-shadow: inset 0 0 20px #ec00ff;
+    border: 3px solid #ec00ff;
+    background-color: black;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
+    transform: translate(5px,0);
 }
 
 .l4 {
-    background: rgb(255, 139, 139);
-    background: linear-gradient(180deg, rgba(255, 139, 139, 1) 0%, rgba(255, 0, 0, 1) 21%, rgba(255, 156, 156, 1) 100%);
+    box-shadow: inset 0 0 20px red;
+    border: 2px solid red;
 }
 
 .l2 {
-    background: rgb(205, 255, 202);
-    background: linear-gradient(180deg, rgba(205, 255, 202, 1) 1%, rgba(29, 255, 0, 1) 21%, rgba(202, 255, 199, 1) 100%);
+    box-shadow: inset 0 0 20px #ec00ff;
+    border: 2px solid #ec00ff;
 }
 
 .l3 {
-    background: rgb(95, 175, 255);
-    background: linear-gradient(180deg, rgba(95, 175, 255, 1) 1%, rgba(0, 111, 255, 1) 21%, rgba(101, 174, 251, 1) 100%);
+    box-shadow: inset 0 0 20px #88ff55;
+    border: 2px solid #88ff55;
 }
 
 .l1 {
-    background: rgb(255, 255, 255);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 1%, rgba(255, 249, 0, 1) 21%, rgba(248, 248, 248, 1) 100%);
+    box-shadow: inset 0 0 20px #cfff00;
+    border: 2px solid #cfff00;
 }
 
 .l0 {
@@ -148,6 +163,10 @@ body {
     }
 }
 
+.animateball{
+    animation: powerball 10s infinite linear;
+}
+
 .powerball {
     background-color: transparent !important;
     background-image: url("../img/powerball.png") !important;
@@ -165,39 +184,35 @@ body {
 }
 
 .startbtn{
-    height: 100px;
-    width: 100px;
-    border-radius: 100%;
-    background-color: red;
+    height: 23%;
+    width: 100%;
+    position: absolute;
+    bottom:27%;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 
 .home,.restart,.next{
-    width: 20vw;
-    background-color: red;
-    height: auto;
+    width: 130px;
+    height: 70px;
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
+#M1{
+    align-items: center;
+}
 
-#myModal{
-    display: none;
-}
-#yourModal{
-    display: none;
-}
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    z-index: 2; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -206,20 +221,80 @@ body {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,.5); /* Black w/ opacity */
 }
-
+.title{
+    font-family: squartiqa, serif;
+    color: #88ff55;
+    font-size: 2.5rem;
+    text-align: center;
+}
+.titlediv{
+    width: 100%;
+    display: flex;
+    position: absolute;
+    top: 30%;
+    justify-content: center;
+}
+.startbtn{
+    display: flex;
+    justify-content: space-evenly;
+}
+.play-text,.game-text{
+    font-family: Lovelo, serif;
+    font-size: 4rem;
+}
+.play-text{
+    color: #ec00ff;
+    text-shadow: 0 0 20px #ec00ff;
+}
+.game-text{
+    color: #cfff00;
+    text-shadow: 0 0 20px #cfff00;
+}
+.playagain{
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    /*border: 1px solid red;*/
+    left: 0;
+    cursor: pointer;
+    bottom: 25%;
+}
 /* Modal Content */
 .modal-content {
     position: relative;
     background-color: #fefefe;
     margin: auto;
     padding: 0;
-    border: 1px solid #888;
-    width: 80%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 20px;
+    width: 1000px;
+    height: 550px;
+    box-shadow: 0 0 50px #ec00ff;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: .4s
+    animation-duration: .4s;
+}
+.modal-c1{
+    background-image: url("../img/start.gif");
+    background-size: cover;
+    background-position: center;
+}
+.modal-c2{
+    background-image: url("../img/end.gif");
+    background-size: cover;
+    background-position: center;
+}
+.modal-c3{
+    background-image: url("../img/next.gif");
+    background-size: cover;
+    background-position: center;
+}
+.modal-c3 .modal-body{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10%;
 }
 
 /* Add Animation */
@@ -229,8 +304,8 @@ body {
 }
 
 @keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
+    from {transform: scale(0); opacity:0}
+    to {transform: scale(1); opacity:1}
 }
 
 /* The Close Button */
