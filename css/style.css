@@ -1,13 +1,23 @@
 * {
-    margin: 0;
+    margin:0;
     padding: 0;
     box-sizing: border-box;
+    /*border: 1px solid red;*/
+}
+
+:root {
+    --ball-left: 0;
+    --ball-top: 0;
+    --pad-left: 0;
+    --power-up-left: 0;
+    --power-up-top: 0;
 }
 
 @font-face {
     font-family: 'chopsic';
     src: url('../fonts/Chopsic.ttf');
 }
+
 
 @font-face {
     font-family: 'Lovelo';
@@ -41,7 +51,7 @@ body {
 
 .brick-container {
     display: grid;
-    grid-template-columns: repeat(9, auto);
+    grid-template-columns: repeat(10, auto);
     grid-gap: 5px;
 }
 
@@ -70,6 +80,7 @@ body {
     font-size: 3vh;
 }
 
+
 #ball {
     position: absolute;
     height: 4vh;
@@ -78,24 +89,44 @@ body {
     background-image: url("../img/ball1.png");
     background-position: center;
     background-size: 100%;
-    top: 400px;
-    left: 50px;
+    left: calc(var(--ball-left) * 1px);
+    top: calc(var(--ball-top) * 1px);
 }
 
+.broken {
+    opacity: 0;
+}
+
+/*.smoothMove {*/
+/*    transition: left 0.01s, top 0.01s;*/
+/*}*/
+
 #pad {
-    width: 190px;
-    height: 25px;
+    width: 15vw;
+    height: 3vh;
     position: absolute;
     bottom: 5vh;
-    left: 500px;
-    background: rgb(0, 0, 0);
-    border: 3px solid #cfff00;
-    box-shadow: inset 0 0 20px #cfff00;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(208, 208, 208, 1) 100%);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: rgb(0, 0, 0);
+    border: 3px solid #cfff00;
+    box-shadow: inset 0 0 20px #cfff00;
     border-radius: 10px;
+    left: calc(var(--pad-left) * 1px);
 }
+
+.power-up {
+    position: absolute;
+    height: 4vh;
+    width: 4vh;
+    background-color: black;
+    left: calc(var(--power-up-left) * 1px);
+    top: calc(var(--power-up-top) * 1px);
+}
+
 
 .leftpad {
     height: 130%;
@@ -164,11 +195,9 @@ body {
         display: none;
     }
 }
-
 .animateball {
     animation: powerball 10s infinite linear;
 }
-
 .powerball {
     background-color: transparent !important;
     background-image: url("../img/powerball.png") !important;
@@ -218,7 +247,7 @@ body {
     height: 50px;
     width: 100px;
     display: flex;
-    background-image: url(../img/nextbtn.gif);    
+    background-image: url(../img/nextbtn.gif);
 }
 
 /* The Modal (background) */
