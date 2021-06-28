@@ -40,7 +40,7 @@ body {
 
 .brick-container {
     display: grid;
-    grid-template-columns: repeat(6, auto);
+    grid-template-columns: repeat(10, auto);
     grid-gap: 5px;
 }
 
