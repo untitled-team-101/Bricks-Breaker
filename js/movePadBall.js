@@ -7,6 +7,7 @@ let gameRunning = 0;
 let ballTop = 0
 let ballLeft = 0
 let ballMoveDelay = 5;
+let ballMoveDistance = 3
 let padCollisionPoint = 0;
 let maxLives = 10;
 let ballsLife = maxLives;
@@ -35,7 +36,7 @@ const startBallMove = () => {
     ballTop = pad.offsetTop - ball.offsetHeight;
     ballsDirection = {
         left: 0,
-        top: -3
+        top: -ballMoveDistance
     }
 }
 
@@ -130,24 +131,17 @@ const getCollisionBetween = (element1, element2) => {
 const checkPadCollision = () => {
     if (getCollisionBetween(ball, pad)) {
         jump()
-        padCollisionPoint = ball.offsetLeft + ball.offsetWidth / 2;
-        if (padCollisionPoint < (pad.offsetLeft + pad.offsetWidth / 4)) {
-            ballsDirection.left = -Math.sqrt(14)
-            ballsDirection.top = -2
-            console.log("1")
-        } else if (padCollisionPoint < (pad.offsetLeft + pad.offsetWidth / 2)) {
-            ballsDirection.left = -2
-            ballsDirection.top = -Math.sqrt(14)
-            console.log("2")
-        } else if (padCollisionPoint >= (pad.offsetLeft + pad.offsetWidth / 2) && padCollisionPoint < (pad.offsetLeft + pad.offsetWidth / 4 * 3)) {
-            ballsDirection.left = 2
-            ballsDirection.top = -Math.sqrt(14)
-            console.log("3")
-        } else {
-            ballsDirection.left = Math.sqrt(14)
-            ballsDirection.top = -2
-            console.log("4")
-        }
+        let padLength = pad.offsetWidth
+        let padCenter = pad.offsetLeft + padLength / 2
+        let ballCenter = ball.offsetLeft + ball.offsetWidth / 2
+        let distance = padCenter - ballCenter
+        let angle = (60 - 60 * (distance/(padLength/2))) + 30
+        let dTop = Math.sin(angle * Math.PI / 180) * ballMoveDistance
+        let dLeft = Math.cos(angle * Math.PI / 180) * ballMoveDistance
+        console.log(dTop, dLeft)
+        ballsDirection.left = -dLeft
+        ballsDirection.top = -dTop
+
         while (ballTop + ball.offsetHeight > pad.offsetTop)
             ballTop--
     }
