@@ -491,3 +491,37 @@ body {
 .next{
     cursor: pointer;
 }
+
+.toggle-audio-container {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: flex-end;
+    color: #fff;
+    padding: 15px 25px 0 0;
+    z-index: 10000;
+}
+
+
+.toggle-audio {
+    background-image: url(../assets/mute.png);
+    height: 30px;
+    width: 30px;
+    opacity: 0.3;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.toggle-audio.active{
+    height: 30px;
+    width: 30px;
+    background-image: url(../assets/audio.png);
+    opacity: 0.3;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
