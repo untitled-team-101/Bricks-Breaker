@@ -181,24 +181,6 @@
     var modals4 = document.getElementById("M4");
     var modals5 = document.getElementById("M5");
 
-    // Get the button that opens the modal
-    // var btn = document.getElementById("myBtn");
-    // var btn2 = document.getElementById("yourBtn");
-    // var btn3 = document.getElementById("nextBtn");
-
-
-    // When the user clicks the button, open the modal
-    // btn.onclick = function () {
-    //     modal.style.display = "flex";
-    // }
-    // btn2.onclick = function () {
-    //     modal2.style.display = "flex";
-    // }
-    // btn3.onclick = function () {
-    //     modal3.style.display = "flex";
-    // }
-
-
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
     if (event.target === modal) {
@@ -252,13 +234,13 @@
     }
 
     const toggleAudio = document.querySelector('.toggle-audio');
-    console.log(toggleAudio)
     toggleAudio.addEventListener('click', (e) => {
     if(toggleAudio.classList.contains('active')){
         x.pause();
         playAudio = false;
     } else {
         playAudio = true;
+        x.play();
     }
     toggleAudio.classList.toggle('active');
     })
