@@ -16,6 +16,7 @@ let ballsDirection = {
     left: 0,
     top: 0
 }
+let movementPhysics = 25 // Movement speed of pad on keyboard controls
 
 mainContainer.addEventListener("mousemove", (event) => {
     let padLeft = event.clientX - event.target.offsetLeft
@@ -29,6 +30,28 @@ mainContainer.addEventListener("mousemove", (event) => {
         ballLeft = padLeft + pad.offsetWidth / 2 - ball.offsetWidth / 2
         mainContainer.style.setProperty("--ball-left", ballLeft.toString())
     }
+})
+
+window.addEventListener('keydown', (event) => {
+    let padLeft = +mainContainer.style.getPropertyValue('--pad-left')
+
+    if(event.key == "ArrowLeft") {
+        padLeft -= movementPhysics
+    }
+    if(event.key == "ArrowRight") {
+        padLeft += movementPhysics
+    }
+
+    if (padLeft < 0)
+        return
+    if (padLeft > window.innerWidth - pad.offsetWidth - 2)
+        return
+
+    if (gameRunning === 0) {
+        ballLeft = padLeft + pad.offsetWidth / 2 - ball.offsetWidth / 2
+        mainContainer.style.setProperty("--ball-left", ballLeft.toString())
+    }
+    mainContainer.style.setProperty("--pad-left", padLeft.toString())
 })
 
 const startBallMove = () => {
